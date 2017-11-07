@@ -58,8 +58,6 @@ getAddR x y = do
             <h1> A SOMA EH: #{soma x y}
         |]
 
-
-
 getHomeR :: Handler Html
 getHomeR = do
     defaultLayout $ do 
@@ -68,3 +66,52 @@ getHomeR = do
         addStylesheet $ (StaticR css_bootstrap_css)
         $(whamletFile "templates/home.hamlet")
         
+paginaDentro :: Widget
+paginaDentro = do 
+    toWidget $ [cassius|
+        h1
+            color:orange;
+    |]
+    [whamlet|
+        <h1> Ola mundo
+    |]
+
+safeTail :: [a] -> Maybe [a]
+safeTail [] = Nothing
+safeTail (x:[]) = Nothing
+safeTail (_:xs) = Just xs
+
+getTailR :: Text -> Handler Html
+getTailR palavra = do
+    palstring <- return $ unpack palavra
+    t <- return $ safeTail palstring -- Handler (Maybe [a])
+    defaultLayout $ do 
+        [whamlet|
+            $maybe jt <- t
+                <h1> O TAIL EH: #{jt}
+            $nothing
+                <h1> ERRO
+        |]
+
+-- $maybe -> Handler (Maybe a)
+-- $forall -> Handler ([a])
+
+getListR :: Handler Html
+getListR = do
+    lista <- return $ ["Santos","Gremio","Palmeiras","Cruzeiro","Botafogo","Flamengo"] :: Handler [String]
+    defaultLayout $ do 
+        [whamlet|
+            <ul>
+                $forall time <- lista
+                    <li> #{ time }
+        |]
+
+getExemploR :: Handler Html
+getExemploR = do 
+    defaultLayout $ do 
+        addStylesheet $ (StaticR css_bootstrap_css)
+        [whamlet|
+            <div class="container">
+                ^{paginaDentro}
+        |]
+
