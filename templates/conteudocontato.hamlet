@@ -1,0 +1,9 @@
+<h1>Contato
+<p>Esta é uma página Contato com algumas informações básicas de contato e um formulário de contato.
+<input name="Nome(obrigatório)" type="text">
+<input name="Email(obrigatório)" type="email">
+<input name="Telefone fixo" type="tel">
+<input name="Telefone celular/Whatsapp" type="tel">
+
+<input name="Comentário" type="text">
+
