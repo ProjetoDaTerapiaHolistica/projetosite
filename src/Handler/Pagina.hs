@@ -125,7 +125,7 @@ getHomeR = defaultLayout $ do
       <meta name="keywords" content="Terapia, Holistica, Tratamento, Agendar">
     |]
     
-    $(whamletFile "templates/header.hamlet")
+    $(whamletFile "templates/menunav.hamlet")
     $(whamletFile "templates/conteudoindex.hamlet")
     $(whamletFile "templates/footer.hamlet")
 

@@ -1,6 +1,6 @@
 Tratamento json
     nm_tratamento       Text
-    qtd_sessao          Date
+    qtd_sessao          Int
     vl_tratamento       Double
     
 Funcionario json
@@ -10,7 +10,8 @@ Funcionario json
     
 Terapeuta json
     nm_terapeuta        Text
-    nm_especialidade    Date
+    nm_especialidade    Text
+    
     
 Cliente json
     nm_cliente          Text

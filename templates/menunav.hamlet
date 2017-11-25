@@ -1,0 +1,68 @@
+<nav class="navbar navbar-default">
+   <div class="container">
+      <div class="navbar-header">
+         <button id="menu-toggle" type="button" class="navbar-toggle" data-toggle="collapse" data-target="#example">
+         <span class="sr-only">Toggle navigation
+         <span class="icon-bar bar1">
+         <span class="icon-bar bar2">
+         <span class="icon-bar bar3">
+         
+         <a href="./index.html" class="navbar-brand">
+           <img class="hidden-xs" alt="Brand" src=".\assets\img\logo.png" height="30" style="display:inline">
+           Lotus 
+           <span class="hidden-xs">
+                - Terapia Holística
+         
+      </div>
+      <div class="collapse navbar-collapse">
+         <ul class="nav navbar-nav navbar-right navbar-uppercase">
+            <li>
+               <a href=".\tratamentos.html" target="_self">
+                   Tratamentos
+            
+            <li>
+               <a href="#" target="_self">
+                   Especialistas
+            
+            <li>
+               <a href="#" target="_self">
+                   Quem somos
+            
+            <li class="dropdown">
+               <a href="#gaia" class="dropdown-toggle" data-toggle="dropdown">
+                   Contato
+                 <i class="fa">
+               
+               <ul class="dropdown-menu dropdown-danger">
+                  <li>
+                     <a href="#">
+                        <i class="fa fa-facebook-square">
+                        Facebook
+                  
+                  <li>
+                     <a href="#">
+                       <i class="fa fa-twitter">
+                       Twitter
+                  
+                  <li>
+                     <a href="#">
+                       <i class="fa fa-instagram">
+                       Instagram
+                  
+               
+            
+            <li class="dropdown">
+               <a href="#gaia" class="dropdown-toggle" data-toggle="dropdown">
+                   Login
+                   <i class="fa">
+               
+               <ul class="dropdown-menu dropdown-danger">
+                  <li>
+                     <a href="#">
+                         <i class="fa fa-cliente">
+                             Admin
+                  
+                  <li>
+                     <a href="#">
+                         <i class="fa fa-cliente">
+                             Cliente
