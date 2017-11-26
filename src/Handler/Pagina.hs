@@ -119,6 +119,7 @@ import Text.Julius
 getHomeR :: Handler Html
 getHomeR = defaultLayout $ do
     addStylesheet $ StaticR css_bootstrap_css
+    addStylesheet $ StaticR css_gaia_css
     toWidgetHead $ [hamlet|
       <meta charset="UTF-8">
       <meta name="description" content="Site da Terapia Holística feito na framework Yesod">
