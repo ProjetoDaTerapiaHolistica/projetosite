@@ -1,6 +1,6 @@
 <div class="section section-header">
   <div class="parallax filter filter-color-yellow">
-    <div class="image" style="background-image: url('static/img/yoga.jpeg')">
+    <div class="image" style="background-image: url('@{StaticR img_yoga_jpeg}')">
 
     <div class="container">
       <div class="content">
@@ -26,7 +26,7 @@
 
 <div class="section section-specialists">
   <div class="parallax filter filter-color-black">
-    <div class="image" style="background-image:url('static/img/bgzin.jpg')">
+    <div class="image" style="background-image:url('@{StaticR img_bgzin_jpg}')">
 
     <div class="container">
       <div class="content">
@@ -50,9 +50,8 @@
                       <div class="description">
                         <h3 class="title">Susan Lofthouse
                         <p class="small-text">Reiki
-                        <p class="description">Tenho praticado o Reiki profissionalmente desde 1999, e estou satisfeito por ter alcançado recentemente o status de Reiki Master.
-                        <br>
-                        <br>
+                        <p class="description text-justify">Tenho praticado o Reiki profissionalmente desde 1999, e estou satisfeito por ter alcançado recentemente o status de Reiki Master.
+
 
                 <div class="col-md-4">
                   <div class="card card-member">
@@ -63,7 +62,7 @@
                       <div class="description">
                         <h3 class="title">Paula Koeppen
                         <p class="small-text">Acupuntura
-                        <p class="description">Meu objetivo é ajudar com o estresse e a tensão da vida moderna e ajudar os outros a realizar melhorias a longo prazo para sua saúde e bem-estar.
+                        <p class="description text-justify">Meu objetivo é ajudar com o estresse e a tensão da vida moderna e ajudar os outros a realizar melhorias a longo prazo para sua saúde e bem-estar.
 
                 <div class="col-md-4">
                   <div class="card card-member">
@@ -74,4 +73,4 @@
                       <div class="description">
                         <h3 class="title">Lorraine Jordens
                         <p class="small-text">Reflexologia
-                        <p class="description">Meu estilo de massagem é geralmente profundo.Posso incorporar Reiki, Reflexologia e massagem Indian Head, e meu estilo geralmente é intuitivo e terapêutico.
+                        <p class="description text-justify">Meu estilo de massagem é geralmente profundo.Posso incorporar Reiki, Reflexologia e massagem Indian Head, e meu estilo geralmente é intuitivo e terapêutico.

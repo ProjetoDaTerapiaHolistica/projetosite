@@ -8,7 +8,7 @@
          <span class="icon-bar bar3">
          
          <a href=@{HomeR} class="navbar-brand">
-           <img class="hidden-xs" alt="logotipo" src="static_img_logo_png" height="30" style="display:inline">
+           <img class="hidden-xs" alt="logotipo" src=@{StaticR img_logo_png} height="30" style="display:inline">
            Lotus 
            <span class="hidden-xs">
                 - Terapia Holística

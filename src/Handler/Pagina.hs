@@ -14,10 +14,10 @@ getHomeR :: Handler Html
 getHomeR = defaultLayout $ do
     addStylesheet $ StaticR css_bootstrap_css
     addStylesheet $ StaticR css_gaia_css
-    addScript $ StaticR js_bootstrap_js
     addScript $ StaticR js_jquery_min_js
     addScript $ StaticR js_modernizr_js
     addScript $ StaticR js_gaia_js
+    addScript $ StaticR js_bootstrap_js
     addStylesheetRemote "https://fonts.googleapis.com/css?family=Cambo|Poppins:400,600"
             --toWidgetHead $ $(juliusFile "templates/js/jquery.dropotron.min.julius")
     
