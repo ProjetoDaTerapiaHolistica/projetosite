@@ -2,7 +2,8 @@ Tratamento json
     nm_tratamento       Text
     qtd_sessao          Int
     vl_tratamento       Double
-    
+
+
 Funcionario json
     nm_func             Text
     nm_email_func       Text

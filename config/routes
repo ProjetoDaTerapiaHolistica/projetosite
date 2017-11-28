@@ -4,6 +4,8 @@
 /robots.txt RobotsR GET
 
 /                                    HomeR          GET
+/tratamento                          TratamentoR    GET
+/especialista                        EspecialistaR  GET
 /sobre                               SobreR         GET
 /contato                             ContatoR       GET
 /agendar                             AgendarR       GET
