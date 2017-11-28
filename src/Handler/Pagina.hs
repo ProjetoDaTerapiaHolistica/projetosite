@@ -93,8 +93,7 @@ getQuemSomosR = defaultLayout $ do
 
 getAgendarR :: Handler Html
 getAgendarR = undefined
-getContatoR :: Handler Html
-getContatoR = undefined
+
     
 
 

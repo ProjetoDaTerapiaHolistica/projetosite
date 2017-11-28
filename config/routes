@@ -7,5 +7,4 @@
 /tratamento                          TratamentoR    GET
 /especialista                        EspecialistaR  GET
 /quemsomos                           QuemSomosR     GET
-/contato                             ContatoR       GET
 /agendar                             AgendarR       GET
