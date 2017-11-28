@@ -1,6 +1,6 @@
 
 
-<nav class="navbar navbar-default navbar-transparent navbar-fixed-top" color-on-scroll=200>
+<nav class="navbar navbar-default {#navbarfixed}" #{colorOnScroll}>
    <div class="container">
       <div class="navbar-header">
          <button id="menu-toggle" type="button" class="navbar-toggle" data-toggle="collapse" data-target="#example">
@@ -27,7 +27,7 @@
                    Especialistas
             
             <li>
-               <a href="@{QuemSomosR}" target="_self">
+               <a href="@{HomeR}" target="_self">
                    Quem somos
             
             <li class="dropdown">

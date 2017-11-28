@@ -6,6 +6,6 @@
 /                                    HomeR          GET
 /tratamento                          TratamentoR    GET
 /especialista                        EspecialistaR  GET
-/sobre                               SobreR         GET
+/quemsomos                           QuemSomosR     GET
 /contato                             ContatoR       GET
 /agendar                             AgendarR       GET
