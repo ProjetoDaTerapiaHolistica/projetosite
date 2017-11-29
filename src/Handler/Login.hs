@@ -14,9 +14,9 @@ formLogin = renderDivs $ (,)
     <$> areq emailField "Email: " Nothing
     <*> areq passwordField "Senha: " Nothing
 
-autenticar :: Text -> Text -> HandlerT App IO (Maybe (Entity Aluno))
-autenticar email senha = runDB $ selectFirst [AlunoEmail ==. email
-                                             ,AlunoSenha ==. senha] []
+autenticar :: Text -> Text -> HandlerT App IO (Maybe (Entity Cliente))
+autenticar email senha = runDB $ selectFirst [ClienteEmail ==. nm_email_cli
+                                             ,ClienteSenha ==. nm_senha_cli] []
     
 getLoginR :: Handler Html
 getLoginR = do 
@@ -39,13 +39,13 @@ postLoginR = do
             setSession "_ID" "admin"
             redirect AdminR
         FormSuccess (email,senha) -> do 
-            aluno <- autenticar email senha 
-            case aluno of 
+            cliente <- autenticar email senha 
+            case cliente of 
                 Nothing -> do 
                     setMessage $ [shamlet| Usuario ou senha invalido |]
                     redirect LoginR 
-                Just (Entity aluid aluno) -> do 
-                    setSession "_ID" (alunoNome aluno)
+                Just (Entity cliid cliente) -> do 
+                    setSession "_ID" (clienteNome cliente)
                     redirect HomeR
         _ -> redirect HomeR
                 

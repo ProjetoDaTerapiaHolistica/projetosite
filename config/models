@@ -1,16 +1,32 @@
-Produto json
-    nome     Text
-    preco    Double
-    estoque  Int
-    deriving Show
-
-Compra json
-    cliid    ClienteId
-    proid    ProdutoId
-    comprado Int
-
 Cliente json
-    nome     Text
-    cpf      Text
-    email    Text
-    UniqueEmail email 
+    nm_cliente          Text
+    nm_endereco_cli     Text
+    nm_telefone_cli     Int
+    nm_celular_cli      Int
+    nm_email_cli        Text
+    nm_senha_cli        Text
+    tratid              TratamentoId
+
+Tratamento json
+    nm_tratamento       Text
+    qtd_sessao          Int
+    vl_tratamento       Double
+    descr_tratamento    Text
+
+Funcionario json
+    nm_func             Text
+    nm_email_func       Text
+    nm_senha_func       Text
+    
+Terapeuta json
+    nm_terapeuta        Text
+    descr_tratamento    Text
+    ft_terapeuta        Text
+    nm_tratamento       TratamentoId
+
+Consulta json
+    cliente             ClienteId
+    terapeuta           TerapeutaId
+    dt_consulta         Day
+    hr_consulta         Day
+

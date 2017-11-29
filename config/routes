@@ -4,6 +4,11 @@
 /robots.txt RobotsR GET
 
 /                                    HomeR          GET
+
+/admin                               AdminR         GET
+/login                               LoginR         GET  POST
+/logout                              LogoutR        POST
+
 /tratamento                          TratamentoR    GET
 /especialista                        EspecialistaR  GET
 /quemsomos                           QuemSomosR     GET

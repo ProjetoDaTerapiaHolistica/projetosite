@@ -56,11 +56,11 @@
                
                <ul class="dropdown-menu dropdown-danger">
                   <li>
-                     <a href="#">
+                     <a href="@{AdminR}">
                          <i class="fa fa-cliente">
                              Admin
                   
                   <li>
-                     <a href="#">
+                     <a href="LoginR">
                          <i class="fa fa-cliente">
                              Cliente
