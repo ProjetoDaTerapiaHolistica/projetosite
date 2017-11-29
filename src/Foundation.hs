@@ -28,7 +28,9 @@ instance Yesod App where
     authRoute _ = Just $ LoginR
     isAuthorized HomeR _ = return Authorized
     isAuthorized LoginR _ = return Authorized
-    -- isAuthorized AlunoR _ = return Authorized
+    isAuthorized TratamentoR _ = return Authorized
+    isAuthorized EspecialistaR _ = return Authorized
+    isAuthorized QuemSomosR _ = return Authorized
     isAuthorized LogoutR _ = return Authorized
     isAuthorized AdminR _ = ehAdmin
     isAuthorized _ _ = ehUsuario

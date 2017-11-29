@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default navbar-transparent navbar-fixed-top" color-on-scroll=200>
+<nav class="navbar navbar-default #{navbarHome}" #{navbar-colorOnScroll}>
    <div class="container">
       <div class="navbar-header">
          <button id="menu-toggle" type="button" class="navbar-toggle" data-toggle="collapse" data-target="#example">
@@ -61,6 +61,6 @@
                              Admin
                   
                   <li>
-                     <a href="LoginR">
+                     <a href="@{LoginR}">
                          <i class="fa fa-cliente">
                              Cliente

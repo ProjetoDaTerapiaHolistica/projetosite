@@ -12,6 +12,8 @@ import Text.Julius
 
 getHomeR :: Handler Html
 getHomeR = defaultLayout $ do
+    let navbarHome = "navbar-transparent navbar-fixed-top" :: Text
+        navbarColorOnScroll = "color-on-scroll=200" :: Text
     addStylesheet $ StaticR css_bootstrap_css
     addStylesheet $ StaticR css_gaia_css
     addScript $ StaticR js_jquery_min_js
@@ -24,9 +26,6 @@ getHomeR = defaultLayout $ do
       <meta charset="UTF-8">
       <meta name="description" content="Site da Terapia Holística feito na framework Yesod">
     |]
-
-    -- let navbarfixed = "navbar-transparent navbar-fixed-top" :: Text
-    -- let colorOnScroll = "color-on-scroll=200" :: Text
     $(whamletFile "templates/menunav.hamlet")
     $(whamletFile "templates/conteudoindex.hamlet")
     $(whamletFile "templates/footer.hamlet")
@@ -36,6 +35,8 @@ getHomeR = defaultLayout $ do
 
 getTratamentoR :: Handler Html
 getTratamentoR = defaultLayout $ do
+    let navbarHome = "" :: Text
+        navbarColorOnScroll = "" :: Text
     addStylesheet $ StaticR css_bootstrap_css
     addStylesheet $ StaticR css_gaia_css
     addScript $ StaticR js_jquery_min_js
@@ -62,8 +63,9 @@ getEspecialistaR = defaultLayout $ do
     addScript $ StaticR js_modernizr_js
     addScript $ StaticR js_bootstrap_js
     addScript $ StaticR js_gaia_js
+    let navbarHome = "" :: Text
+        navbarColorOnScroll = "" :: Text
     addStylesheetRemote "https://fonts.googleapis.com/css?family=Cambo|Poppins:400,600"
-    
     toWidgetHead $ [hamlet|
       <meta charset="UTF-8">
       <meta name="description" content="Site da Terapia Holística feito na framework Yesod">
@@ -75,6 +77,8 @@ getEspecialistaR = defaultLayout $ do
 
 getQuemSomosR :: Handler Html
 getQuemSomosR = defaultLayout $ do
+    let navbarHome = "" :: Text
+        navbarColorOnScroll = "" :: Text
     addStylesheet $ StaticR css_bootstrap_css
     addStylesheet $ StaticR css_gaia_css
     addScript $ StaticR js_jquery_min_js

@@ -8,21 +8,40 @@ module Handler.Login where
 
 import Import
 import Database.Persist.Postgresql
-
+import Yesod.Form.Bootstrap3
 formLogin :: Form (Text, Text)
-formLogin = renderDivs $ (,)
-    <$> areq emailField "Email: " Nothing
-    <*> areq passwordField "Senha: " Nothing
+formLogin = renderBootstrap $ (,)
+    <$> areq emailField FieldSettings{fsId=Just "txtEmail",
+                                      fsLabel=" ",
+                                      fsTooltip= Nothing,
+                                      fsName= Nothing,
+                                      fsAttrs=[("placeholder","E-mail"), ("class","form-control")]} Nothing
+    <*> areq passwordField FieldSettings{fsId=Just "txtSenha",
+                                      fsLabel=" ",
+                                      fsTooltip= Nothing,
+                                      fsName= Nothing,
+                                      fsAttrs=[("placeholder","Senha"), ("class","form-control")]} Nothing
 
 autenticar :: Text -> Text -> HandlerT App IO (Maybe (Entity Cliente))
-autenticar email senha = runDB $ selectFirst [ClienteEmail ==. nm_email_cli
-                                             ,ClienteSenha ==. nm_senha_cli] []
+autenticar email senha = runDB $ selectFirst [ClienteEmail ==. email
+                                             ,ClienteSenha ==. senha] []
     
 getLoginR :: Handler Html
 getLoginR = do 
     (widget,enctype) <- generateFormPost formLogin
     msg <- getMessage
     defaultLayout $ do 
+        let navbarHome = "navbar-transparent navbar-fixed-top" :: Text
+            navbarColorOnScroll = "color-on-scroll=200" :: Text
+        addStylesheet $ StaticR css_bootstrap_css
+        addStylesheet $ StaticR css_gaia_css
+        addScript $ StaticR js_jquery_min_js
+        addScript $ StaticR js_modernizr_js
+        addScript $ StaticR js_bootstrap_js
+        addScript $ StaticR js_gaia_js
+        addStylesheetRemote "https://fonts.googleapis.com/css?family=Cambo|Poppins:400,600"
+        
+        $(whamletFile "templates/menunav.hamlet")
         [whamlet|
             $maybe mensa <- msg 
                 <h1> Usuario Invalido
@@ -30,6 +49,7 @@ getLoginR = do
                 ^{widget}
                 <input type="submit" value="Login">  
         |]
+        $(whamletFile "templates/footer.hamlet")
 
 postLoginR :: Handler Html
 postLoginR = do

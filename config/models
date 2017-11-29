@@ -1,28 +1,28 @@
 Cliente json
-    nm_cliente          Text
-    nm_endereco_cli     Text
-    nm_telefone_cli     Int
-    nm_celular_cli      Int
-    nm_email_cli        Text
-    nm_senha_cli        Text
+    nome                Text
+    endereco            Text
+    telefone            Int
+    celular             Int
+    email               Text
+    senha               Text
     tratid              TratamentoId
 
 Tratamento json
-    nm_tratamento       Text
-    qtd_sessao          Int
-    vl_tratamento       Double
-    descr_tratamento    Text
+    nome                Text
+    nro_sessoes         Int
+    valor               Double
+    descricao           Text
 
 Funcionario json
-    nm_func             Text
-    nm_email_func       Text
-    nm_senha_func       Text
+    nome                Text
+    email               Text
+    senha               Text
     
 Terapeuta json
-    nm_terapeuta        Text
-    descr_tratamento    Text
-    ft_terapeuta        Text
-    nm_tratamento       TratamentoId
+    nome                Text
+    descricao           Text
+    avatar              Text
+    tratid              TratamentoId
 
 Consulta json
     cliente             ClienteId

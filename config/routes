@@ -5,9 +5,10 @@
 
 /                                    HomeR          GET
 
-/admin                               AdminR         GET
-/login                               LoginR         GET  POST
+/login                               LoginR         GET POST
 /logout                              LogoutR        POST
+/admin                               AdminR         GET
+
 
 /tratamento                          TratamentoR    GET
 /especialista                        EspecialistaR  GET
