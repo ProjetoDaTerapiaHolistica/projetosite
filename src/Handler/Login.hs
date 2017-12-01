@@ -31,8 +31,8 @@ getLoginR = do
     (widget,enctype) <- generateFormPost formLogin
     msg <- getMessage
     defaultLayout $ do 
-        let navbarHome = "navbar-transparent navbar-fixed-top" :: Text
-            navbarColorOnScroll = "color-on-scroll=200" :: Text
+        let navbarHome = "" :: Text
+            navbarColorOnScroll = "" :: Text
         addStylesheet $ StaticR css_bootstrap_css
         addStylesheet $ StaticR css_gaia_css
         addScript $ StaticR js_jquery_min_js

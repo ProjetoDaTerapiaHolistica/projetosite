@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default #{navbarHome}" #{navbar-colorOnScroll}>
+<nav class="navbar navbar-default #{navbarHome}" #{coloronscroll}>
    <div class="container">
       <div class="navbar-header">
          <button id="menu-toggle" type="button" class="navbar-toggle" data-toggle="collapse" data-target="#example">
@@ -52,7 +52,7 @@
             
             <li class="dropdown">
                <a href="#gaia" class="dropdown-toggle" data-toggle="dropdown">
-                   Login
+                  Login
                
                <ul class="dropdown-menu dropdown-danger">
                   <li>
@@ -61,6 +61,6 @@
                              Admin
                   
                   <li>
-                     <a href="@{LoginR}">
+                     <a href="#">
                          <i class="fa fa-cliente">
                              Cliente

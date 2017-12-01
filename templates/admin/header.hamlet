@@ -1,6 +1,18 @@
+<header>
+    <img src=@{StaticR img_logo_png}>
+    <h1 class="text-center"> Espaço Lotus
+    <h2 class="text-center"> Terapia Holistica
+    <nav class="center-block">
+        <ul class="col-lg-12 list-inline">
+            <li> <a href=@{HomeR}> IR PARA O SITE </a> </li>
+            <li> <a href=@{AdminR}> INÍCIO </a> </li>
+            
+            <li> <a href=@{AgendarR}> AGENDAR </a> </li>
+            
+            
 
 
-<nav class="navbar navbar-default {#navbarfixed}" #{colorOnScroll}>
+<nav class="navbar navbar-default #{navbarHome}" #{coloronscroll}>
    <div class="container">
       <div class="navbar-header">
          <button id="menu-toggle" type="button" class="navbar-toggle" data-toggle="collapse" data-target="#example">
@@ -19,48 +31,41 @@
       <div class="collapse navbar-collapse">
          <ul class="nav navbar-nav navbar-right navbar-uppercase">
             <li>
+               <a href="@{HomeR}" target="_self">
+                   Pagina Inícial
+            <li>
                <a href="@{TratamentoR}" target="_self">
                    Tratamentos
-            
             <li>
                <a href="@{EspecialistaR}" target="_self">
                    Especialistas
-            
             <li>
-               <a href="@{HomeR}" target="_self">
+               <a href="@{QuemSomosR}" target="_self">
                    Quem somos
-            
             <li class="dropdown">
                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                    Contato
-                 <!--<i class="fa">-->
-               
                <ul class="dropdown-menu dropdown-danger">
                   <li>
                      <a href="#">
                         <i class="fa fa-facebook-square">
                         Facebook
-                  
                   <li>
                      <a href="#">
                        <i class="fa fa-twitter">
                        Twitter
-                  
                   <li>
                      <a href="#">
                        <i class="fa fa-instagram">
                        Instagram
                   
-               
-            
             <li class="dropdown">
                <a href="#gaia" class="dropdown-toggle" data-toggle="dropdown">
-                   Login
-                   <!--<i class="fa">-->
+                  Login
                
                <ul class="dropdown-menu dropdown-danger">
                   <li>
-                     <a href="#">
+                     <a href="@{AdminR}">
                          <i class="fa fa-cliente">
                              Admin
                   

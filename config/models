@@ -1,4 +1,4 @@
-Cliente json
+Cliente
     nome                Text
     endereco            Text
     telefone            Int
@@ -7,24 +7,24 @@ Cliente json
     senha               Text
     tratid              TratamentoId
 
-Tratamento json
+Tratamento
     nome                Text
     nro_sessoes         Int
     valor               Double
     descricao           Text
 
-Funcionario json
+Funcionario
     nome                Text
     email               Text
     senha               Text
     
-Terapeuta json
+Terapeuta
     nome                Text
     descricao           Text
     avatar              Text
     tratid              TratamentoId
 
-Consulta json
+Consulta
     cliente             ClienteId
     terapeuta           TerapeutaId
     dt_consulta         Day

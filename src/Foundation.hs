@@ -33,6 +33,7 @@ instance Yesod App where
     isAuthorized QuemSomosR _ = return Authorized
     isAuthorized LogoutR _ = return Authorized
     isAuthorized AdminR _ = ehAdmin
+    isAuthorized (StaticR _) _ = return Authorized
     isAuthorized _ _ = ehUsuario
 
 ehAdmin :: Handler AuthResult
@@ -41,14 +42,14 @@ ehAdmin = do
     case sessao of 
         Nothing -> return AuthenticationRequired
         (Just "admin") -> return Authorized
-        (Just _ ) -> return $ Unauthorized "VC NAO EH O PAH!"
+        (Just _ ) -> return $ Unauthorized "Tu não és admin. No donut for you."
     
 ehUsuario :: Handler AuthResult
 ehUsuario = do
     sessao <- lookupSession "_ID"
     case sessao of 
         Nothing -> return AuthenticationRequired
-        (Just "admin") -> return $ Unauthorized "ADMIN N FAZ COISA NORMAL" 
+        (Just "admin") -> return $ Unauthorized "Não é uma rota para admin." 
         (Just _) -> return Authorized
 
 
