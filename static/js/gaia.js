@@ -15,7 +15,7 @@
 
 var transparent = true;
 
-var fixedTop = false;
+var fixedTop = true;
 
 var navbar_initialized = false;
 
@@ -66,6 +66,8 @@ $(document).ready(function(){
     $('.google-map').each(function(){
         var lng = $(this).data('lng');
         var lat = $(this).data('lat');
+
+
 
         gaia.initGoogleMaps(this, lat, lng);
     });
