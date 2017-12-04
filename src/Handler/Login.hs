@@ -44,11 +44,21 @@ getLoginR = do
         [whamlet|
             $maybe mensa <- msg 
                 <h1> Usuario Invalido
-            <form action=@{LoginR} method=post>
-                ^{widget}
-                <input type="submit" value="Login">  
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4 col-md-offset-4">
+                        <form action=@{LoginR} method=post>
+                            ^{widget}
+                            <input type="submit" value="Login" class="btn-default">
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
         |]
         $(whamletFile "templates/footer.hamlet")
+
+
 
 postLoginR :: Handler Html
 postLoginR = do

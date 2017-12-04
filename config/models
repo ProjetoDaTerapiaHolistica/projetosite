@@ -1,11 +1,11 @@
 Cliente
     nome                Text
     endereco            Text
-    telefone            Int
-    celular             Int
+    telefone            Text
+    celular             Text
     email               Text
     senha               Text
-    tratid              TratamentoId
+    Uniqueemail         email
 
 Tratamento
     nome                Text
@@ -17,6 +17,7 @@ Funcionario
     nome                Text
     email               Text
     senha               Text
+
     
 Terapeuta
     nome                Text

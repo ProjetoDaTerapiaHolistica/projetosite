@@ -21,10 +21,6 @@ getAdminR = do
         addScript $ StaticR js_gaia_js
         addStylesheetRemote "https://fonts.googleapis.com/css?family=Cambo|Poppins:400,600"
         
-        $(whamletFile "templates/admin/menunav.hamlet")
-        toWidget [whamlet|
-            <h1> BEM-VINDO ROOT!
-            <form action=@{LogoutR} method=post>
-                <input type="submit" value="Logout">
-        |]
-        $(whamletFile "templates/admin/footer.hamlet")
+        $(whamletFile "templates/admin/menunavAdmin.hamlet")
+        $(whamletFile "templates/admin/conteudoAdmin.hamlet")
+        $(whamletFile "templates/footer.hamlet")

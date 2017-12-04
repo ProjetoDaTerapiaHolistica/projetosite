@@ -33,6 +33,7 @@ instance Yesod App where
     isAuthorized QuemSomosR _ = return Authorized
     isAuthorized LogoutR _ = return Authorized
     isAuthorized AdminR _ = ehAdmin
+    isAuthorized CadastroClienteR _ = return Authorized
     isAuthorized (StaticR _) _ = return Authorized
     isAuthorized _ _ = ehUsuario
 
