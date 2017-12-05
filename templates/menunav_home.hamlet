@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default #{navbarHome} color-on-scroll="200"" >
+<nav class="navbar navbar-default navbar-transparent navbar-fixed-top" color-on-scroll="200">
    <div class="container">
       <div class="navbar-header">
          <button id="menu-toggle" type="button" class="navbar-toggle" data-toggle="collapse" data-target="#example">
@@ -49,18 +49,12 @@
                        Instagram
                   
                
-            
-            <li class="dropdown">
-               <a href="#gaia" class="dropdown-toggle" data-toggle="dropdown">
-                  Login
-               
-               <ul class="dropdown-menu dropdown-danger">
-                  <li>
-                     <a href="@{AdminR}">
-                         <i class="fa fa-cliente">
-                             Admin
-                  
-                  <li>
-                     <a href="#">
-                         <i class="fa fa-cliente">
-                             Cliente
+            $maybe usuario <- logado
+               <li>
+                  <form action=@{LogoutR} method=post class="form-inline">
+                     <input type="submit" value="Logout" class="form-control">
+
+            $nothing
+               <li>
+                  <a href="@{LoginR}" target="_self">
+                     Login

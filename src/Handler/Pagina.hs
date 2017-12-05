@@ -8,10 +8,12 @@ module Handler.Pagina where
 
 import Import
 import Text.Julius
-
+import Database.Persist.Postgresql
 
 getHomeR :: Handler Html
-getHomeR = defaultLayout $ do
+getHomeR = do
+  logado <- lookupSession "_ID"
+  defaultLayout $ do
     let navbarfixed = "navbar-transparent navbar-fixed-top" :: Text
     addStylesheet $ StaticR css_bootstrap_css
     addStylesheet $ StaticR css_gaia_css
@@ -28,7 +30,7 @@ getHomeR = defaultLayout $ do
       <meta name="description" content="Site da Terapia Holística feito na framework Yesod">
       <meta name="viewport" content="width=device-width, initial-scale=1">
     |]
-    $(whamletFile "templates/menunav.hamlet")
+    $(whamletFile "templates/menunav_home.hamlet")
     $(whamletFile "templates/conteudoindex.hamlet")
     $(whamletFile "templates/footer.hamlet")
 
@@ -36,7 +38,9 @@ getHomeR = defaultLayout $ do
 
 
 getTratamentoR :: Handler Html
-getTratamentoR = defaultLayout $ do
+getTratamentoR = do
+  logado <- lookupSession "_ID"
+  defaultLayout $ do
     let navbarfixed = "" :: Text
     addStylesheet $ StaticR css_bootstrap_css
     addStylesheet $ StaticR css_gaia_css
@@ -58,7 +62,9 @@ getTratamentoR = defaultLayout $ do
 
 
 getEspecialistaR :: Handler Html
-getEspecialistaR = defaultLayout $ do
+getEspecialistaR = do
+  logado <- lookupSession "_ID"
+  defaultLayout $ do
     addStylesheet $ StaticR css_bootstrap_css
     addStylesheet $ StaticR css_gaia_css
     addScript $ StaticR js_jquery_min_js
@@ -78,7 +84,9 @@ getEspecialistaR = defaultLayout $ do
 
 
 getQuemSomosR :: Handler Html
-getQuemSomosR = defaultLayout $ do
+getQuemSomosR = do
+  logado <- lookupSession "_ID"
+  defaultLayout $ do
     let navbarfixed = "" :: Text
 
     addStylesheet $ StaticR css_bootstrap_css

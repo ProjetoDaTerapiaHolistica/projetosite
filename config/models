@@ -6,20 +6,21 @@ Cliente
     email               Text
     senha               Text
     Uniqueemail         email
-
+    deriving Show
 Tratamento
     nome                Text
     descricao           Text
+    deriving Show
 
 Especialista
     nome                Text
     descricao           Text
     avatar              Text
-
+    deriving Show
 
 Consulta
     cliente             ClienteId
     terapeuta           EspecialistaId
     dt_consulta         Day
     hr_consulta         Day
-
+    deriving Show

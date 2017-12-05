@@ -28,6 +28,7 @@ autenticar email senha = runDB $ selectFirst [ClienteEmail ==. email
     
 getLoginR :: Handler Html
 getLoginR = do 
+    logado <- lookupSession "_ID"
     (widget,enctype) <- generateFormPost formLogin
     msg <- getMessage
     defaultLayout $ do 
@@ -50,11 +51,11 @@ getLoginR = do
                         <form action=@{LoginR} method=post>
                             ^{widget}
                             <input type="submit" value="Login" class="btn-default">
-                            <a href=@{CadastroClienteR} class="btn-default">Cadastro
-                            <br>
-                            <br>
-                            <br>
-                            <br>
+                        <a href=@{CadastroClienteR} class="btn-default">Cadastro
+                        <br>
+                        <br>
+                        <br>
+                        <br>
         |]
         $(whamletFile "templates/footer.hamlet")
 

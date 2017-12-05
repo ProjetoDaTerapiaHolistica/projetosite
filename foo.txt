@@ -1,0 +1,308 @@
+[1mdiff --git a/config/models b/config/models[m
+[1mindex 0faae52..6da931a 100644[m
+[1m--- a/config/models[m
+[1m+++ b/config/models[m
+[36m@@ -6,20 +6,21 @@[m [mCliente[m
+     email               Text[m
+     senha               Text[m
+     Uniqueemail         email[m
+[31m-[m
+[32m+[m[32m    deriving Show[m
+ Tratamento[m
+     nome                Text[m
+     descricao           Text[m
+[32m+[m[32m    deriving Show[m
+ [m
+ Especialista[m
+     nome                Text[m
+     descricao           Text[m
+     avatar              Text[m
+[31m-[m
+[32m+[m[32m    deriving Show[m
+ [m
+ Consulta[m
+     cliente             ClienteId[m
+     terapeuta           EspecialistaId[m
+     dt_consulta         Day[m
+     hr_consulta         Day[m
+[31m-[m
+[32m+[m[32m    deriving Show[m
+[1mdiff --git a/src/Handler/Login.hs b/src/Handler/Login.hs[m
+[1mindex 3cef3e7..ee485dd 100644[m
+[1m--- a/src/Handler/Login.hs[m
+[1m+++ b/src/Handler/Login.hs[m
+[36m@@ -28,6 +28,7 @@[m [mautenticar email senha = runDB $ selectFirst [ClienteEmail ==. email[m
+     [m
+ getLoginR :: Handler Html[m
+ getLoginR = do [m
+[32m+[m[32m    logado <- lookupSession "_ID"[m
+     (widget,enctype) <- generateFormPost formLogin[m
+     msg <- getMessage[m
+     defaultLayout $ do [m
+[36m@@ -50,11 +51,11 @@[m [mgetLoginR = do[m
+                         <form action=@{LoginR} method=post>[m
+                             ^{widget}[m
+                             <input type="submit" value="Login" class="btn-default">[m
+[31m-                            <a href=@{CadastroClienteR} class="btn-default">Cadastro[m
+[31m-                            <br>[m
+[31m-                            <br>[m
+[31m-                            <br>[m
+[31m-                            <br>[m
+[32m+[m[32m                        <a href=@{CadastroClienteR} class="btn-default">Cadastro[m
+[32m+[m[32m                        <br>[m
+[32m+[m[32m                        <br>[m
+[32m+[m[32m                        <br>[m
+[32m+[m[32m                        <br>[m
+         |][m
+         $(whamletFile "templates/footer.hamlet")[m
+ [m
+[1mdiff --git a/src/Handler/Pagina.hs b/src/Handler/Pagina.hs[m
+[1mindex a1baf81..65898fb 100644[m
+[1m--- a/src/Handler/Pagina.hs[m
+[1m+++ b/src/Handler/Pagina.hs[m
+[36m@@ -8,10 +8,12 @@[m [mmodule Handler.Pagina where[m
+ [m
+ import Import[m
+ import Text.Julius[m
+[31m-[m
+[32m+[m[32mimport Database.Persist.Postgresql[m
+ [m
+ getHomeR :: Handler Html[m
+[31m-getHomeR = defaultLayout $ do[m
+[32m+[m[32mgetHomeR = do[m
+[32m+[m[32m  logado <- lookupSession "_ID"[m
+[32m+[m[32m  defaultLayout $ do[m
+     let navbarfixed = "navbar-transparent navbar-fixed-top" :: Text[m
+     addStylesheet $ StaticR css_bootstrap_css[m
+     addStylesheet $ StaticR css_gaia_css[m
+[36m@@ -28,7 +30,7 @@[m [mgetHomeR = defaultLayout $ do[m
+       <meta name="description" content="Site da Terapia Holística feito na framework Yesod">[m
+       <meta name="viewport" content="width=device-width, initial-scale=1">[m
+     |][m
+[31m-    $(whamletFile "templates/menunav.hamlet")[m
+[32m+[m[32m    $(whamletFile "templates/menunav_home.hamlet")[m
+     $(whamletFile "templates/conteudoindex.hamlet")[m
+     $(whamletFile "templates/footer.hamlet")[m
+ [m
+[36m@@ -36,7 +38,9 @@[m [mgetHomeR = defaultLayout $ do[m
+ [m
+ [m
+ getTratamentoR :: Handler Html[m
+[31m-getTratamentoR = defaultLayout $ do[m
+[32m+[m[32mgetTratamentoR = do[m
+[32m+[m[32m  logado <- lookupSession "_ID"[m
+[32m+[m[32m  defaultLayout $ do[m
+     let navbarfixed = "" :: Text[m
+     addStylesheet $ StaticR css_bootstrap_css[m
+     addStylesheet $ StaticR css_gaia_css[m
+[36m@@ -58,7 +62,9 @@[m [mgetTratamentoR = defaultLayout $ do[m
+ [m
+ [m
+ getEspecialistaR :: Handler Html[m
+[31m-getEspecialistaR = defaultLayout $ do[m
+[32m+[m[32mgetEspecialistaR = do[m
+[32m+[m[32m  logado <- lookupSession "_ID"[m
+[32m+[m[32m  defaultLayout $ do[m
+     addStylesheet $ StaticR css_bootstrap_css[m
+     addStylesheet $ StaticR css_gaia_css[m
+     addScript $ StaticR js_jquery_min_js[m
+[36m@@ -78,7 +84,9 @@[m [mgetEspecialistaR = defaultLayout $ do[m
+ [m
+ [m
+ getQuemSomosR :: Handler Html[m
+[31m-getQuemSomosR = defaultLayout $ do[m
+[32m+[m[32mgetQuemSomosR = do[m
+[32m+[m[32m  logado <- lookupSession "_ID"[m
+[32m+[m[32m  defaultLayout $ do[m
+     let navbarfixed = "" :: Text[m
+ [m
+     addStylesheet $ StaticR css_bootstrap_css[m
+[1mdiff --git a/templates/admin/menunavAdmin.hamlet b/templates/admin/menunavAdmin.hamlet[m
+[1mindex e4c64a3..464b3f5 100644[m
+[1m--- a/templates/admin/menunavAdmin.hamlet[m
+[1m+++ b/templates/admin/menunavAdmin.hamlet[m
+[36m@@ -7,7 +7,7 @@[m
+             <span class="icon-bar bar2">[m
+             <span class="icon-bar bar3">[m
+          [m
+[31m-         <a href=@{HomeR} class="navbar-brand">[m
+[32m+[m[32m         <a href=@{AdminR} class="navbar-brand">[m
+            <img class="hidden-xs" alt="logotipo" src=@{StaticR img_logo_png} height="30" style="display:inline">[m
+            Lotus [m
+            <span class="hidden-xs">[m
+[36m@@ -16,18 +16,39 @@[m
+       [m
+       <div class="collapse navbar-collapse">[m
+          <ul class="nav navbar-nav navbar-right navbar-uppercase">[m
+[31m-            <li>[m
+[31m-               <a href="@{HomeR}" target="_self">[m
+[31m-                   Ir Para o Site[m
+[31m-            <li>[m
+[31m-               <a href="@{AdminR}" target="_self">[m
+[31m-                   Pagina Inícial[m
+[31m-            <li>[m
+[31m-               <a href="@{TratamentoR}" target="_self">[m
+[32m+[m
+[32m+[m[32m            <li class="dropdown">[m
+[32m+[m[32m               <a href="#" class="dropdown-toggle" data-toggle="dropdown">[m
+                    Tratamentos[m
+[31m-            <li>[m
+[31m-               <a href="@{EspecialistaR}" target="_self">[m
+[32m+[m[41m               [m
+[32m+[m[32m               <ul class="dropdown-menu dropdown-danger">[m
+[32m+[m[32m                  <li>[m
+[32m+[m[32m                     <a href="@{TratamentoR}" target="_self">[m
+[32m+[m[32m                        <i class="fa">[m
+[32m+[m[32m                        Visualização[m
+[32m+[m[41m                  [m
+[32m+[m[32m                  <li>[m
+[32m+[m[32m                     <a href="@{CadastroTratamentoR}" target="_self">[m
+[32m+[m[32m                        <i class="fa">[m
+[32m+[m[32m                        Edição[m
+[32m+[m
+[32m+[m
+[32m+[m[32m            <li class="dropdown">[m
+[32m+[m[32m               <a href="#" class="dropdown-toggle" data-toggle="dropdown">[m
+                    Especialistas[m
+[32m+[m[41m               [m
+[32m+[m[32m               <ul class="dropdown-menu dropdown-danger">[m
+[32m+[m[32m                  <li>[m
+[32m+[m[32m                     <a href="@{EspecialistaR}" target="_self">[m
+[32m+[m[32m                        <i class="fa">[m
+[32m+[m[32m                        Visualização[m
+[32m+[m[41m                  [m
+[32m+[m[32m                  <li>[m
+[32m+[m[32m                     <a href="@{CadastroEspecialistaR}" target="_self">[m
+[32m+[m[32m                        <i class="fa">[m
+[32m+[m[32m                        Edição[m
+[32m+[m
+[32m+[m
+             <li>[m
+                <a href="@{QuemSomosR}" target="_self">[m
+                    Quem somos[m
+[1mdiff --git a/templates/conteudoEspecialista.hamlet b/templates/conteudoEspecialista.hamlet[m
+[1mindex e3200fc..881d4e9 100644[m
+[1m--- a/templates/conteudoEspecialista.hamlet[m
+[1m+++ b/templates/conteudoEspecialista.hamlet[m
+[36m@@ -5,11 +5,11 @@[m
+                 <h2>Especialistas[m
+                 <div class="separator separator-danger">ॐ[m
+             [m
+[31m-            <p class="description text-justify">A terapia holística visa equilibrar estados mentais-emocionais negativos, desbloquear a energia dos centros, trazer mais autoconsciência corporal, emocional, mental e espiritual,  entre outros, para minimizar o sofrimento.[m
+[32m+[m[32m            <p class="description text-justify">Contamos com uma equipe de profissionais altamente capacitados e alinhados com a filosofia de viver bem.[m
+             [m
+[31m-            <p class="description text-justify">Trata pessoas que podem não ser consideradas doentes, tecnicamente, mas que querem melhorar a utilização dos seus corpos e sentir maior plenitude nas suas vidas.[m
+[32m+[m[32m            <p class="description text-justify">Nosso diferencial é o atendimento personalizado, pois acompanhamos pessoalmente cada paciente, do começo ao fim.[m
+                 [m
+[31m-            <p class="description text-justify">A terapia holística é uma alternativa de tratamento que considera o ser humano uma individualidade complexa formada por muitos corpos (corpo físico, corpo energético, corpo emocional, corpo mental e corpos anímicos e espirituais). Os problemas que aparecem no corpo físico são reflexos de desajustes energéticos e emocionais-mentais, então o ser humano deve ser tratado como um todo, holisticamente. O mais importante é tratar as causas das doenças, para que os efeitos sejam suprimidos.[m
+[32m+[m[32m            <p class="description text-justify">Sobre a Nossa Equipe de Profissionais Está a Sua Disposição.[m[41m [m
+  [m
+ <div class="section">[m
+   <div class="container">[m
+[36m@@ -17,7 +17,7 @@[m
+       <div class="title-area">[m
+         <h2>Nossa equipe[m
+         <div class="separator separator-danger">ॐ[m
+[31m-        <p class="description">Lorem Miçanga Ipsum Dolor Cannabis Fummaris Meditaris[m
+[32m+[m[32m        <p class="description">Formada por profissionais altamente capacitados, e que amam o que fazem.[m
+ [m
+ [m
+ <div class="team">[m
+[1mdiff --git a/templates/conteudoQuemSomos.hamlet b/templates/conteudoQuemSomos.hamlet[m
+[1mindex 9498e1a..29443f5 100644[m
+[1m--- a/templates/conteudoQuemSomos.hamlet[m
+[1m+++ b/templates/conteudoQuemSomos.hamlet[m
+[36m@@ -3,9 +3,8 @@[m
+         <div class="row">[m
+             <div class="title-area">[m
+                 <h2>Quem somos nós:[m
+[31m-            <p class="description text-justify">A terapia holística visa equilibrar estados mentais-emocionais negativos, desbloquear a energia dos centros, trazer mais autoconsciência corporal, emocional, mental e espiritual,  entre outros, para minimizar o sofrimento.[m
+[32m+[m[32m            <p class="description text-justify">A Lotus foi fundada em 2017, na cidade de Santos, pela terapeuta Thamyres Santos.[m
+             [m
+[31m-            <p class="description text-justify">Trata pessoas que podem não ser consideradas doentes, tecnicamente, mas que querem melhorar a utilização dos seus corpos e sentir maior plenitude nas suas vidas.[m
+[32m+[m[32m            <p class="description text-justify">A nossa principal missão é a de trazer saúde e benefícios aos nossos clientes.[m
+                 [m
+[31m-            <p class="description text-justify">A terapia holística é uma alternativa de tratamento que considera o ser humano uma individualidade complexa formada por muitos corpos (corpo físico, corpo energético, corpo emocional, corpo mental e corpos anímicos e espirituais). Os problemas que aparecem no corpo físico são reflexos de desajustes energéticos e emocionais-mentais, então o ser humano deve ser tratado como um todo, holisticamente. O mais importante é tratar as causas das doenças, para que os efeitos sejam suprimidos.[m
+[31m- [m
+\ No newline at end of file[m
+[32m+[m[32m            <p class="description text-justify">Atualmente contamos com xxx funcionários.[m
+[1mdiff --git a/templates/conteudoindex.hamlet b/templates/conteudoindex.hamlet[m
+[1mindex b5b6aca..25299f3 100644[m
+[1m--- a/templates/conteudoindex.hamlet[m
+[1m+++ b/templates/conteudoindex.hamlet[m
+[36m@@ -6,7 +6,7 @@[m
+       <div class="content">[m
+         <div class="title-area">[m
+           <h1 class="title-modern visible-md visible-lg">Lotus[m
+[31m-          <h3>Irineu. Você não sabe, nem eu.[m
+[32m+[m[32m          <h3>A saúde é um bem maior.[m
+         <div class="button-get-started">[m
+           <a href="#" target="_blank" class="btn btn-white btn-fill btn-lg ">Agende sua consulta[m
+ [m
+[36m@@ -34,7 +34,7 @@[m
+           <div class="title-area">[m
+             <h2>Nossa equipe[m
+             <div class="separator separator-danger">ॐ[m
+[31m-            <p class="description">Lorem Miçanga Ipsum Dolor Cannabis Fummaris Meditaris[m
+[32m+[m[32m            <p class="description">Formada por profissionais altamente capacitados, e que amam o que fazem.[m
+ [m
+ [m
+         <div class="team">[m
+[1mdiff --git a/templates/menunav.hamlet b/templates/menunav.hamlet[m
+[1mindex 417dc67..d820c53 100644[m
+[1m--- a/templates/menunav.hamlet[m
+[1m+++ b/templates/menunav.hamlet[m
+[36m@@ -48,6 +48,12 @@[m
+                        <i class="fa fa-instagram">[m
+                        Instagram[m
+                   [m
+[31m-            <li>[m
+[31m-               <a href="@{LoginR}" target="_self">[m
+[31m-                   Login[m
+[32m+[m[32m            $maybe usuario <- logado[m
+[32m+[m[32m               <li>[m
+[32m+[m[32m                  <form action=@{LogoutR} method=post class="form-inline">[m
+[32m+[m[32m                     <input type="submit" value="Logout" class="form-control">[m
+[32m+[m
+[32m+[m[32m            $nothing[m
+[32m+[m[32m               <li>[m
+[32m+[m[32m                  <a href="@{LoginR}" target="_self">[m
+[32m+[m[32m                     Login[m
+[1mdiff --git a/templates/menunav_home.hamlet b/templates/menunav_home.hamlet[m
+[1mindex 14db615..353a7e7 100644[m
+[1m--- a/templates/menunav_home.hamlet[m
+[1m+++ b/templates/menunav_home.hamlet[m
+[36m@@ -1,4 +1,4 @@[m
+[31m-<nav class="navbar navbar-default #{navbarHome} color-on-scroll="200"" >[m
+[32m+[m[32m<nav class="navbar navbar-default navbar-transparent navbar-fixed-top" color-on-scroll="200">[m
+    <div class="container">[m
+       <div class="navbar-header">[m
+          <button id="menu-toggle" type="button" class="navbar-toggle" data-toggle="collapse" data-target="#example">[m
+[36m@@ -49,18 +49,12 @@[m
+                        Instagram[m
+                   [m
+                [m
+[31m-            [m
+[31m-            <li class="dropdown">[m
+[31m-               <a href="#gaia" class="dropdown-toggle" data-toggle="dropdown">[m
+[31m-                  Login[m
+[31m-               [m
+[31m-               <ul class="dropdown-menu dropdown-danger">[m
+[31m-                  <li>[m
+[31m-                     <a href="@{AdminR}">[m
+[31m-                         <i class="fa fa-cliente">[m
+[31m-                             Admin[m
+[31m-                  [m
+[31m-                  <li>[m
+[31m-                     <a href="#">[m
+[31m-                         <i class="fa fa-cliente">[m
+[31m-                             Cliente[m
+[32m+[m[32m            $maybe usuario <- logado[m
+[32m+[m[32m               <li>[m
+[32m+[m[32m                  <form action=@{LogoutR} method=post class="form-inline">[m
+[32m+[m[32m                     <input type="submit" value="Logout" class="form-control">[m
+[32m+[m
+[32m+[m[32m            $nothing[m
+[32m+[m[32m               <li>[m
+[32m+[m[32m                  <a href="@{LoginR}" target="_self">[m
+[32m+[m[32m                     Login[m

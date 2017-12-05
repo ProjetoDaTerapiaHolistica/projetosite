@@ -48,6 +48,12 @@
                        <i class="fa fa-instagram">
                        Instagram
                   
-            <li>
-               <a href="@{LoginR}" target="_self">
-                   Login
+            $maybe usuario <- logado
+               <li>
+                  <form action=@{LogoutR} method=post class="form-inline">
+                     <input type="submit" value="Logout" class="form-control">
+
+            $nothing
+               <li>
+                  <a href="@{LoginR}" target="_self">
+                     Login

@@ -7,7 +7,7 @@
             <span class="icon-bar bar2">
             <span class="icon-bar bar3">
          
-         <a href=@{HomeR} class="navbar-brand">
+         <a href=@{AdminR} class="navbar-brand">
            <img class="hidden-xs" alt="logotipo" src=@{StaticR img_logo_png} height="30" style="display:inline">
            Lotus 
            <span class="hidden-xs">
@@ -16,18 +16,39 @@
       
       <div class="collapse navbar-collapse">
          <ul class="nav navbar-nav navbar-right navbar-uppercase">
-            <li>
-               <a href="@{HomeR}" target="_self">
-                   Ir Para o Site
-            <li>
-               <a href="@{AdminR}" target="_self">
-                   Pagina Inícial
-            <li>
-               <a href="@{TratamentoR}" target="_self">
+
+            <li class="dropdown">
+               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                    Tratamentos
-            <li>
-               <a href="@{EspecialistaR}" target="_self">
+               
+               <ul class="dropdown-menu dropdown-danger">
+                  <li>
+                     <a href="@{TratamentoR}" target="_self">
+                        <i class="fa">
+                        Visualização
+                  
+                  <li>
+                     <a href="@{CadastroTratamentoR}" target="_self">
+                        <i class="fa">
+                        Edição
+
+
+            <li class="dropdown">
+               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                    Especialistas
+               
+               <ul class="dropdown-menu dropdown-danger">
+                  <li>
+                     <a href="@{EspecialistaR}" target="_self">
+                        <i class="fa">
+                        Visualização
+                  
+                  <li>
+                     <a href="@{CadastroEspecialistaR}" target="_self">
+                        <i class="fa">
+                        Edição
+
+
             <li>
                <a href="@{QuemSomosR}" target="_self">
                    Quem somos
