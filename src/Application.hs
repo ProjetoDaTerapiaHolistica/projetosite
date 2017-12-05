@@ -42,6 +42,8 @@ import Handler.Login
 import Handler.Admin
 import Handler.AdminTratamento
 import Handler.CadastroCliente
+import Handler.CadastroTratamento
+import Handler.CadastroEspecialista
 
 
 -- This line actually creates our YesodDispatch instance. It is the second half

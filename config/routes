@@ -11,9 +11,11 @@
 /admin/tratamento                    AdminTratamentoR    GET POST
 /cliente/cadastro                    CadastroClienteR    GET POST
 
-/tratamento                          TratamentoR         GET
-/especialista                        EspecialistaR       GET
-/quemsomos                           QuemSomosR          GET
-/agendar                             AgendarR            GET
+/tratamento                          TratamentoR            GET
+/tratamento/cadastro                 CadastroTratamentoR    GET POST
+/especialista                        EspecialistaR          GET
+/especialista/cadastro               CadastroEspecialistaR  GET POST
+/quemsomos                           QuemSomosR             GET
+/agendar                             AgendarR               GET
 
 

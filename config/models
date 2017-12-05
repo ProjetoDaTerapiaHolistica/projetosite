@@ -9,25 +9,17 @@ Cliente
 
 Tratamento
     nome                Text
-    nro_sessoes         Int
-    valor               Double
     descricao           Text
 
-Funcionario
-    nome                Text
-    email               Text
-    senha               Text
-
-    
-Terapeuta
+Especialista
     nome                Text
     descricao           Text
     avatar              Text
-    tratid              TratamentoId
+
 
 Consulta
     cliente             ClienteId
-    terapeuta           TerapeutaId
+    terapeuta           EspecialistaId
     dt_consulta         Day
     hr_consulta         Day
 

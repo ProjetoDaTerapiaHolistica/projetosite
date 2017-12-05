@@ -32,9 +32,13 @@ instance Yesod App where
     isAuthorized EspecialistaR _ = return Authorized
     isAuthorized QuemSomosR _ = return Authorized
     isAuthorized LogoutR _ = return Authorized
-    isAuthorized AdminR _ = ehAdmin
     isAuthorized CadastroClienteR _ = return Authorized
     isAuthorized (StaticR _) _ = return Authorized
+    
+    isAuthorized CadastroTratamentoR _ = ehAdmin
+    isAuthorized CadastroEspecialistaR _ = ehAdmin
+    isAuthorized AdminR _ = ehAdmin
+    
     isAuthorized _ _ = ehUsuario
 
 ehAdmin :: Handler AuthResult

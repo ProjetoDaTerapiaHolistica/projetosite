@@ -50,7 +50,7 @@ getLoginR = do
                         <form action=@{LoginR} method=post>
                             ^{widget}
                             <input type="submit" value="Login" class="btn-default">
-                            <br>
+                            <a href=@{CadastroClienteR} class="btn-default">Cadastro
                             <br>
                             <br>
                             <br>
