@@ -39,11 +39,16 @@ getCadastroTratamentoR = do
           <meta name="description" content="Site da Terapia Holística feito na framework Yesod">
           <meta name="viewport" content="width=device-width, initial-scale=1">
         |]
+        $(whamletFile "templates/admin/menunavAdmin.hamlet")        
         [whamlet|
-            <form action=@{CadastroTratamentoR} method=post>
-                ^{widget}
-                <input type="submit" value="Cadastrar">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4 col-md-offset-4">            
+                        <form action=@{CadastroTratamentoR} method=post>
+                            ^{widget}
+                            <input type="submit" value="Cadastrar">
         |]
+        $(whamletFile "templates/footer.hamlet")        
 
 postCadastroTratamentoR :: Handler Html
 postCadastroTratamentoR = do 
@@ -51,5 +56,5 @@ postCadastroTratamentoR = do
     case res of 
         FormSuccess tratamento -> do 
             _ <- runDB $ insert tratamento
-            redirect LoginR
-        _ -> redirect HomeR
+            redirect TratamentoR
+        _ -> redirect CadastroTratamentoR

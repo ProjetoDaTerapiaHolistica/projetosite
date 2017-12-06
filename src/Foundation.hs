@@ -26,6 +26,7 @@ type Form a = Html -> MForm Handler (FormResult a, Widget)
 instance Yesod App where
     makeLogger = return . appLogger
     authRoute _ = Just $ LoginR
+    isAuthorized (StaticR _) _ = return Authorized
     isAuthorized HomeR _ = return Authorized
     isAuthorized LoginR _ = return Authorized
     isAuthorized TratamentoR _ = return Authorized
@@ -33,8 +34,7 @@ instance Yesod App where
     isAuthorized QuemSomosR _ = return Authorized
     isAuthorized LogoutR _ = return Authorized
     isAuthorized CadastroClienteR _ = return Authorized
-    isAuthorized (StaticR _) _ = return Authorized
-    
+
     isAuthorized CadastroTratamentoR _ = ehAdmin
     isAuthorized CadastroEspecialistaR _ = ehAdmin
     isAuthorized AdminR _ = ehAdmin
@@ -44,7 +44,7 @@ instance Yesod App where
 ehAdmin :: Handler AuthResult
 ehAdmin = do
     sessao <- lookupSession "_ID"
-    case sessao of 
+    case sessao of
         Nothing -> return AuthenticationRequired
         (Just "admin") -> return Authorized
         (Just _ ) -> return $ Unauthorized "Tu não és admin. No donut for you."
@@ -54,8 +54,8 @@ ehUsuario = do
     sessao <- lookupSession "_ID"
     case sessao of 
         Nothing -> return AuthenticationRequired
-        (Just "admin") -> return $ Unauthorized "Não é uma rota para admin." 
-        (Just _) -> return Authorized
+        -- (Just "admin") -> return $ Unauthorized "Não é uma rota para admin."
+        (Just _ ) -> return Authorized
 
 
 instance YesodPersist App where

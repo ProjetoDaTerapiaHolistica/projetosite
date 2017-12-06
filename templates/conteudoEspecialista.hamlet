@@ -24,36 +24,11 @@
   <div class="row">
     <div class="col-md-10 col-md-offset-1">
       <div class="row">
-        <div class="col-md-4">
-          <div class="card card-member">
-            <div class="content">
-              <div class="avatar avatar-danger">
-                <img alt="..." class="img-circle" src="#">
-
-              <div class="description">
-                <h3 class="title">Susan Lofthouse
-                <p class="small-text">Reiki
-                <p class="description text-justify">Tenho praticado o Reiki profissionalmente desde 1999, e estou satisfeito por ter alcançado recentemente o status de Reiki Master.
-
-
-        <div class="col-md-4">
-          <div class="card card-member">
-            <div class="content">
-              <div class="avatar avatar-danger">
-                <img alt="..." class="img-circle" src="#">
-
-              <div class="description">
-                <h3 class="title">Paula Koeppen
-                <p class="small-text">Acupuntura
-                <p class="description text-justify">Meu objetivo é ajudar com o estresse e a tensão da vida moderna e ajudar os outros a realizar melhorias a longo prazo para sua saúde e bem-estar.
-
-        <div class="col-md-4">
-          <div class="card card-member">
-            <div class="content">
-              <div class="avatar avatar-danger">
-                <img alt="..." class="img-circle" src="#">
-
-              <div class="description">
-                <h3 class="title">Lorraine Jordens
-                <p class="small-text">Reflexologia
-                <p class="description text-justify">Meu estilo de massagem é geralmente profundo.Posso incorporar Reiki, Reflexologia e massagem Indian Head, e meu estilo geralmente é intuitivo e terapêutico.
+        $forall Entity pid (Especialista nome descricao _ ) <- especialistas
+            <div class="col-md-4">
+              <div class="card card-member">
+                <div class="content">
+                  <div class="avatar avatar-danger">
+                    <img alt="..." class="img-circle" src=@{StaticR img_logo_png}>
+                  <h3 class="title">#{nome}
+                  <p class="description text-justify">#{descricao}

@@ -15,39 +15,8 @@
 
 <hr>
 <div class="row">
-    <div class="col-md-4">
-        <div class="info-icon">
-            <h3>Reiki
-            <p class="description  text-justify">Reiki é uma técnica japonesa para redução do estresse e relaxamento que promove a cura. É transmitido através da “imposição de mãos” e baseia-se na ideia de que uma “energia vital” invisível flui através de nós e é o que nos faz estarmos vivos.
-        
-    
-    <div class="col-md-4">
-        <div class="info-icon">
-            <h3>Acupuntura
-            <p class="description  text-justify">Acupuntura é um método de tratamento terapêutico, paliativo, da medicina chinesa, aplicado aos pontos e meridianos corpóreo. A palavra, derivada do latim, significa Acum (agulha) e Punctum (picada ou punção), uma adaptação ao termo chinês Zhen Jiu, literalmente traduzida como agulha moxa.
-        
-    
-    <div class="col-md-4">
-        <div class="info-icon">
-            <h3>Shiatsu
-            <p class="description text-justify">Massagem (do francês massage) é a prática de aplicar força ou vibração sobre tecidos macios do corpo, incluindo músculos, tecidos conectivos, tendões, ligamentos e articulações, para estimular a circulação sanguínea, a mobilidade, a elasticidade ou alívio de determinadas dores corporais.
-    
-    <div class="clearfix visible-md-block visible-lg-block">        
-
-    <div class="col-md-4">
-        <div class="info-icon">
-            <h3>Chromoterapia
-            <p class="description text-justify">Massagem (do francês massage) é a prática de aplicar força ou vibração sobre tecidos macios do corpo, incluindo músculos, tecidos conectivos, tendões, ligamentos e articulações, para estimular a circulação sanguínea, a mobilidade, a elasticidade ou alívio de determinadas dores corporais.
-            
-
-    <div class="col-md-4">
-        <div class="info-icon">
-            <h3>Laserterapia
-            <p class="description text-justify">Massagem (do francês massage) é a prática de aplicar força ou vibração sobre tecidos macios do corpo, incluindo músculos, tecidos conectivos, tendões, ligamentos e articulações, para estimular a circulação sanguínea, a mobilidade, a elasticidade ou alívio de determinadas dores corporais.
-            
-
-    <div class="col-md-4">
-        <div class="info-icon">
-            <h3>Geoterapia
-            <p class="description text-justify">Massagem (do francês massage) é a prática de aplicar força ou vibração sobre tecidos macios do corpo, incluindo músculos, tecidos conectivos, tendões, ligamentos e articulações, para estimular a circulação sanguínea, a mobilidade, a elasticidade ou alívio de determinadas dores corporais.
-            
+    $forall Entity pid (Tratamento nome descricao) <- tratamentos
+        <div class="col-md-4">
+            <div class="info-icon">
+                <h3>#{nome}
+                <p class="description  text-justify">#{descricao}

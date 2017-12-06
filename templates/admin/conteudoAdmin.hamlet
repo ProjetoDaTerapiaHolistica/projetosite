@@ -1,2 +1,2 @@
-<h2>Bem-vindo, Root.
-<p>Em construção.
+<h2 class="text-center">Bem-vindo, Root.
+<img alt="Thamyres" class="img-responsive center-block" src=@{StaticR img_root_png}>

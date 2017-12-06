@@ -40,6 +40,7 @@ getHomeR = do
 getTratamentoR :: Handler Html
 getTratamentoR = do
   logado <- lookupSession "_ID"
+  tratamentos<-runDB $ selectList [] [] 
   defaultLayout $ do
     let navbarfixed = "" :: Text
     addStylesheet $ StaticR css_bootstrap_css
@@ -64,6 +65,7 @@ getTratamentoR = do
 getEspecialistaR :: Handler Html
 getEspecialistaR = do
   logado <- lookupSession "_ID"
+  especialistas<-runDB $ selectList [] [] 
   defaultLayout $ do
     addStylesheet $ StaticR css_bootstrap_css
     addStylesheet $ StaticR css_gaia_css

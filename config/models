@@ -7,6 +7,12 @@ Cliente
     senha               Text
     Uniqueemail         email
     deriving Show
+
+ClienteTratamento
+    cliid               ClienteId
+    tratid              TratamentoId
+    deriving Show
+    
 Tratamento
     nome                Text
     descricao           Text
