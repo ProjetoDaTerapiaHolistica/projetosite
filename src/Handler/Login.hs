@@ -33,6 +33,7 @@ getLoginR = do
     msg <- getMessage
     defaultLayout $ do 
         let navbarfixed = "" :: Text
+            colorOnScroll = "color-on-scroll=\"200\"" :: Text        
         addStylesheet $ StaticR css_bootstrap_css
         addStylesheet $ StaticR css_gaia_css
         addScript $ StaticR js_jquery_min_js

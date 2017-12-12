@@ -15,6 +15,7 @@ getHomeR = do
   logado <- lookupSession "_ID"
   defaultLayout $ do
     let navbarfixed = "navbar-transparent navbar-fixed-top" :: Text
+        colorOnScroll = "color-on-scroll=\"200\""
     addStylesheet $ StaticR css_bootstrap_css
     addStylesheet $ StaticR css_gaia_css
     addScript $ StaticR js_modernizr_js
@@ -30,7 +31,7 @@ getHomeR = do
       <meta name="description" content="Site da Terapia Holística feito na framework Yesod">
       <meta name="viewport" content="width=device-width, initial-scale=1">
     |]
-    $(whamletFile "templates/menunav_home.hamlet")
+    $(whamletFile "templates/menunav.hamlet")
     $(whamletFile "templates/conteudoindex.hamlet")
     $(whamletFile "templates/footer.hamlet")
 
@@ -43,6 +44,7 @@ getTratamentoR = do
   tratamentos<-runDB $ selectList [] [] 
   defaultLayout $ do
     let navbarfixed = "" :: Text
+        colorOnScroll = "color-on-scroll=\"200\""
     addStylesheet $ StaticR css_bootstrap_css
     addStylesheet $ StaticR css_gaia_css
     addScript $ StaticR js_jquery_min_js
@@ -74,6 +76,7 @@ getEspecialistaR = do
     addScript $ StaticR js_bootstrap_js
     addScript $ StaticR js_gaia_js
     let navbarfixed = "" :: Text
+        colorOnScroll = "color-on-scroll=\"200\""
     addStylesheetRemote "https://fonts.googleapis.com/css?family=Cambo|Poppins:400,600"
     toWidgetHead $ [hamlet|
       <meta charset="UTF-8">
@@ -90,6 +93,7 @@ getQuemSomosR = do
   logado <- lookupSession "_ID"
   defaultLayout $ do
     let navbarfixed = "" :: Text
+        colorOnScroll = "color-on-scroll=\"200\"" :: Text
 
     addStylesheet $ StaticR css_bootstrap_css
     addStylesheet $ StaticR css_gaia_css

@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default #{navbarfixed}">
+<nav #{colorOnScroll} class="navbar navbar-default #{navbarfixed}">
    <div class="container">
       <div class="navbar-header">
          <button id="menu-toggle" type="button" class="navbar-toggle" data-toggle="collapse" data-target="#example">
